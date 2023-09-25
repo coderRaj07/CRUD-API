@@ -1,7 +1,6 @@
 require("dotenv").config();
 const express = require("express");
 const app = express();
-const router = express.Router();
 const connectDB = require("./db/connect");
 const { sendSuccessResponse, sendErrorResponse } = require("./handleResponse");
 const PORT = process.env.PORT || 5000;
@@ -16,7 +15,7 @@ const PORT = process.env.PORT || 5000;
 
 // Import the defineProductRoutes function and pass the required functions
 const defineProductRoutes = require("./routes/products");
-
+const router = express.Router();
 // Use the router for /api/products route by invoking the defineProductRoutes function
 defineProductRoutes(router, sendSuccessResponse, sendErrorResponse);
 app.use("/api/products", router); 
